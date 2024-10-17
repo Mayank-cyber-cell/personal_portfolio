@@ -1,0 +1,95 @@
+// Smooth scrolling for navigation links
+document.querySelectorAll('nav ul li a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Fade in effect for hero section text
+window.addEventListener('scroll', function () {
+    const heroText = document.querySelector('.hero-text');
+    const heroImg = document.querySelector('.hero-img');
+    const windowHeight = window.innerHeight;
+
+    let heroTextPos = heroText.getBoundingClientRect().top;
+    let heroImgPos = heroImg.getBoundingClientRect().top;
+
+    if (heroTextPos < windowHeight - 100) {
+        heroText.style.opacity = '1';
+        heroText.style.transform = 'translateY(0)';
+    }
+    if (heroImgPos < windowHeight - 100) {
+        heroImg.style.opacity = '1';
+        heroImg.style.transform = 'translateY(0)';
+    }
+});
+
+// Fade-in on load for hero section
+document.addEventListener("DOMContentLoaded", function () {
+    const heroText = document.querySelector('.hero-text');
+    const heroImg = document.querySelector('.hero-img');
+    heroText.style.opacity = '0';
+    heroText.style.transform = 'translateY(-50px)';
+    heroImg.style.opacity = '0';
+    heroImg.style.transform = 'translateY(50px)';
+
+    setTimeout(function () {
+        heroText.style.transition = 'all 1s ease';
+        heroImg.style.transition = 'all 1s ease';
+        heroText.style.opacity = '1';
+        heroText.style.transform = 'translateY(0)';
+        heroImg.style.opacity = '1';
+        heroImg.style.transform = 'translateY(0)';
+    }, 500);
+});
+
+// Animation for services section on scroll
+window.addEventListener('scroll', function () {
+    const serviceItems = document.querySelectorAll('.service');
+    serviceItems.forEach(service => {
+        let servicePos = service.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        if (servicePos < windowHeight - 100) {
+            service.style.opacity = '1';
+            service.style.transform = 'translateY(0)';
+        }
+    });
+});
+
+// Initial state for service boxes
+document.querySelectorAll('.service').forEach(service => {
+    service.style.opacity = '0';
+    service.style.transform = 'translateY(50px)';
+});
+
+// Fade-in effect for project images
+window.addEventListener('scroll', function () {
+    const projectImages = document.querySelectorAll('.projects-box img');
+    projectImages.forEach(image => {
+        let imagePos = image.getBoundingClientRect().top;
+        let windowHeight = window.innerHeight;
+        if (imagePos < windowHeight - 100) {
+            image.style.opacity = '1';
+            image.style.transform = 'scale(1)';
+        }
+    });
+});
+
+// Initial state for project images
+document.querySelectorAll('.projects-box img').forEach(image => {
+    image.style.opacity = '0';
+    image.style.transform = 'scale(0.9)';
+    image.style.transition = 'all 0.8s ease-in-out';
+});
+    // Get all text elements for the zoom effect
+    const textElements = document.querySelectorAll('h1, h2, h3, p');
+
+    // Add the zoom-text class to each text element
+    textElements.forEach(el => {
+        el.classList.add('zoom-text');
+    });
+
+
